@@ -1,0 +1,46 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+       http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+        version="2.0">
+
+        <persistence-unit name="dbEscola">
+
+              <!-- provedor/implementacao do JPA -->
+              <provider>org.hibernate.ejb.HibernatePersistence</provider>
+            
+              <mapping-file>META-INF/queries.xml</mapping-file>
+              
+              <!-- entidades mapeadas -->              
+              <class>x.exemplo.jpa.Disciplina</class>
+                          
+              <properties>
+
+                    <!-- dados da conexao MYSQL -->
+                      <!--
+                    <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+                    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_projeto_JPA" />
+                    <property name="javax.persistence.jdbc.user" value="root" />
+                    <property name="javax.persistence.jdbc.password" value="1234" />
+                     -->
+                    <!-- propriedades do hibernate Mysql -->
+                     <!--
+                    <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+                    	-->
+
+                    <!-- dados da conexao ORACLE -->
+                    <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver" />
+					<property name="hibernate.connection.url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+					<property name="hibernate.connection.username" value="system" />
+					<property name="hibernate.connection.password" value="123" />
+					<!-- propriedades do hibernate Oracle -->
+					<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
+
+                    <property name="hibernate.show_sql" value="true" />
+                    <property name="hibernate.format_sql" value="true" />
+                    <!-- atualiza o banco, gera as tabelas se for preciso -->
+                    <property name="hibernate.hbm2ddl.auto" value="update" />
+              </properties>
+           
+        </persistence-unit>
+  </persistence>
